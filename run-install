@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd laradock
+
+#docker-compose up -d --force-recreate nginx php-fpm mysql workspace
+docker-compose exec workspace bash -e ./install/keychmod-install
+docker-compose exec workspace bash -e ./install/php-install
+
+npm install
+npm run production

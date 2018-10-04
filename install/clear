@@ -1,0 +1,11 @@
+#!/bin/bash
+
+php artisan clear-compiled
+php artisan queue:restart
+
+php artisan route:clear
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+exit

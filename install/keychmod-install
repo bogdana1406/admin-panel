@@ -1,0 +1,29 @@
+#!/bin/bash
+
+chmod 777 -R ./bootstrap
+echo 'Set chmod 777 for /bootstrap ok/ '
+
+chmod 777 -R ./storage
+echo 'Set chmod 777 for /storage ok/ '
+
+chmod 777 -R ./storage/logs
+echo 'Set chmod 777 for /storage/logs ok/ '
+
+file="./storage/logs/error.log"
+if [[ ! -f $file ]]; then
+  touch $file
+fi
+
+file="./storage/logs/info.log"
+if [[ ! -f $file ]]; then
+  touch $file
+fi
+
+chmod 777 ./storage/logs/error.log
+echo 'Set chmod 777 for /storage/logs/error.log ok/ '
+
+chmod 777 ./storage/logs/info.log
+echo 'Set chmod 777 for /storage/logs/info.log ok/ '
+
+exit
+

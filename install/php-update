@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo 'Updating composer'
+composer update --no-dev
+
+echo 'Clear cache'
+php artisan route:clear
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+echo 'Migrating database'
+php artisan migrate
+exit
+git

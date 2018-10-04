@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo 'Run composer install'
+composer install --no-dev
+
+echo 'Run migrate'
+php artisan migrate:fresh --seed
+
+echo 'Artisan key:generate'
+php artisan key:generate
+
+echo 'Clear cache'
+php artisan route:clear
+php artisan cache:clear
+php artisan config:clear
+exit
+git
