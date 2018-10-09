@@ -79,6 +79,33 @@ $(document).ready(function(){
             $(element).parents('.control-group').addClass('success');
         }
     });
+
+    //Edit Category Validation
+
+    $("#edit_category").validate({
+        rules:{
+            category_name:{
+                required:true
+            },
+            description:{
+                required:true
+            },
+            url:{
+                required:true
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
+    });
+
+
 	
 	$("#number_validate").validate({
 		rules:{
@@ -134,5 +161,18 @@ $(document).ready(function(){
 			$(element).parents('.control-group').removeClass('error');
 			$(element).parents('.control-group').addClass('success');
 		}
+	});
+
+	$(".delCat").click(function(event){
+
+		//alert("test");
+
+		if(confirm('Are you sure you want to delete this Category?')){
+
+            window.location.href = '/admin/delete-category/' + event.target.dataset.id;
+			return true;
+
+		}
+		return false;
 	});
 });
