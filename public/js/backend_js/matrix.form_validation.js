@@ -80,6 +80,24 @@ $(document).ready(function(){
         }
     });
 
+//Add Brand Validation
+
+    $("#add_brand").validate({
+        rules:{
+            brand_name:{
+                required:true
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
+    });
     //Edit Category Validation
 
     $("#edit_category").validate({
@@ -163,6 +181,8 @@ $(document).ready(function(){
 		}
 	});
 
+	//Delete Category Validation
+
 	$(".delCat").click(function(event){
 
 		//alert("test");
@@ -175,4 +195,20 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+
+    //Delete Brand Validation
+
+    $(".delBrand").click(function(event){
+
+        //alert("test");
+
+        if(confirm('Are you sure you want to delete this Brand?')){
+
+            window.location.href = '/admin/delete-brand/' + event.target.dataset.id;
+            return true;
+
+        }
+        return false;
+    });
+
 });
