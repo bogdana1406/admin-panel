@@ -43,6 +43,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::match(['get', 'post'], '/admin/delete-brand/{id}', 'BrandController@deleteBrand');
     Route::get('/admin/view-brands', 'BrandController@viewBrands');
 
+    //engines Route (Admin)
+
+    Route::match(['get', 'post'], '/admin/add-engine', 'EngineController@addEngine');
+    Route::match(['get', 'post'], '/admin/edit-engine/{id}', 'EngineController@editEngine');
+    Route::match(['get', 'post'], '/admin/delete-engine/{id}', 'EngineController@deleteEngine');
+    Route::get('/admin/view-engines', 'EngineController@viewEngines');
+
 });
 
 
