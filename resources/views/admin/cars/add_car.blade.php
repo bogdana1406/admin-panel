@@ -3,37 +3,48 @@
 
     <div id="content">
         <div id="content-header">
-            <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Categories</a> <a href="#" class="current">Add Category</a> </div>
-            <h1>Categories</h1>
+            <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Cars</a> <a href="#" class="current">Add Car</a> </div>
+            <h1>Cars</h1>
         </div>
         <div class="container-fluid"><hr>
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget-box">
                         <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-                            <h5>Add Category</h5>
+                            <h5>Add Car</h5>
                         </div>
                         <div class="widget-content nopadding">
-                            <form class="form-horizontal" method="post" action="{{ url('/admin/add-category') }}" name="add_category" id="add_category" novalidate="novalidate"> {{ csrf_field() }}
+                            <form class="form-horizontal" method="post" action="{{ url('/admin/add-car') }}" name="add_car" id="add_car" novalidate="novalidate"> {{ csrf_field() }}
                                 <div class="control-group">
-                                    <label class="control-label">Category Name</label>
+
+                                    <div class="control-group">
+                                        <label class="control-label">Select</label>
+                                        <div class="controls">
+                                            <div class="select2-container" id="s2id_autogen1">
+
+                                                <option>First option</option>
+                                                <option>Second option</option>
+                                                <option>Third option</option>
+                                                <option>Fourth option</option>
+                                                <option>Fifth option</option>
+                                                <option>Sixth option</option>
+                                                <option>Seventh option</option>
+                                                <option>Eighth option</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <label class="control-label">Model</label>
                                     <div class="controls">
-                                        <input type="text" name="category_name" id="category_name">
+                                        <input type="text" name="model" id="model">
                                     </div>
                                 </div>
-
                                 <div class="control-group">
-                                    <label class="control-label">Category Level</label>
+                                    <label class="control-label">Model</label>
                                     <div class="controls">
-                                        <select name="parent_id" style="width: 220px">
-                                        <option value="0">Main Category</option>
-                                        @foreach($levels as $val)
-                                            <option value="{{ $val->id }}">{{ $val->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" name="model" id="model">
                                     </div>
                                 </div>
-
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
@@ -54,7 +65,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </div>
 
 @endsection
