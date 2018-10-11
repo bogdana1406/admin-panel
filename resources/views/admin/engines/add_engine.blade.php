@@ -19,6 +19,11 @@
                                     <label class="control-label">Engine Name</label>
                                     <div class="controls">
                                         <input type="text" name="engine_name" id="engine_name">
+                                        @if($errors->has('engine_name'))
+                                            <span class="alert alert-danger" role="alert">
+                                              {{$errors->first('engine_name')}}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-actions">

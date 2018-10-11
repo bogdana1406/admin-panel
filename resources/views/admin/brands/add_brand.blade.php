@@ -18,7 +18,13 @@
                                 <div class="control-group">
                                     <label class="control-label">Brand Name</label>
                                     <div class="controls">
-                                        <input type="text" name="brand_name" id="brand_name">
+                                        <input type="text" name="brand_name" id="brand_name" >
+                                        @if($errors->has('brand_name'))
+
+                                            <span class="alert alert-danger" role="alert">
+                                              {{$errors->first('brand_name')}}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-actions">

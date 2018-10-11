@@ -38,15 +38,22 @@ Route::group(['middleware' => ['auth']], function(){
 
     //brands Route (Admin)
 
-    Route::match(['get', 'post'], '/admin/add-brand', 'BrandController@addBrand');
-    Route::match(['get', 'post'], '/admin/edit-brand/{id}', 'BrandController@editBrand');
+    //Route::match(['get', 'post'], '/admin/add-brand', 'BrandController@addBrand');
+    Route::get('/admin/add-brand', 'BrandController@showAddBrand');
+    Route::post('/admin/add-brand', 'BrandController@addBrand');
+    Route::get('/admin/edit-brand/{id}', 'BrandController@showEditBrand');
+    Route::post('/admin/edit-brand/{id}', 'BrandController@editBrand');
     Route::match(['get', 'post'], '/admin/delete-brand/{id}', 'BrandController@deleteBrand');
     Route::get('/admin/view-brands', 'BrandController@viewBrands');
 
     //engines Route (Admin)
 
-    Route::match(['get', 'post'], '/admin/add-engine', 'EngineController@addEngine');
-    Route::match(['get', 'post'], '/admin/edit-engine/{id}', 'EngineController@editEngine');
+    //Route::match(['get', 'post'], '/admin/add-engine', 'EngineController@addEngine');
+    //Route::match(['get', 'post'], '/admin/edit-engine/{id}', 'EngineController@editEngine');
+    Route::get('/admin/add-engine', 'EngineController@showAddEngine');
+    Route::post('/admin/add-engine', 'EngineController@addEngine');
+    Route::get('/admin/edit-engine/{id}', 'EngineController@showEditEngine');
+    Route::post('/admin/edit-engine/{id}', 'EngineController@editEngine');
     Route::match(['get', 'post'], '/admin/delete-engine/{id}', 'EngineController@deleteEngine');
     Route::get('/admin/view-engines', 'EngineController@viewEngines');
 

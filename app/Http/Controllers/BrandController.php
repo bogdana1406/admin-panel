@@ -2,34 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestValidateBrand;
 use Illuminate\Http\Request;
 use App\Brand;
 class BrandController extends Controller
 {
-    public function addBrand(Request $request)
+
+    public function showAddBrand()
     {
-        if($request->isMethod('post')){
-           $data = $request->all();
-           $brand = new Brand;
-           $brand->name = $data['brand_name'];
-           $brand->save();
-           return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands added Successfully');
-           //echo "<pre>"; print_r($data); die;
-        }
-       return view('admin.brands.add_brand');
+        return view('admin.brands.add_brand');
     }
 
-    public function editBrand(Request $request, $id = null)
+    public function AddBrand(RequestValidateBrand $request)
     {
-        if($request->isMethod('post'))
-        {
-            $data = $request->all();
-            Brand::where(['id'=>$id])->update(['name'=>$data['brand_name']]);
-            return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands Update Successfully');
-           // echo "<pre>"; print_r($data); die;
-        }
+        $data = $request->all();
+          $brand = new Brand;
+          $brand->name = $data['brand_name'];
+          $brand->save();
+          return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands added Successfully');
+//           //echo "<pre>"; print_r($data); die;
+    }
+
+//    public function addBrand(Request $request)
+//    {
+//        if($request->isMethod('post')){
+//           $data = $request->all();
+//           $brand = new Brand;
+//           $brand->name = $data['brand_name'];
+//           $brand->save();
+//           return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands added Successfully');
+//           //echo "<pre>"; print_r($data); die;
+//        }
+//       return view('admin.brands.add_brand');
+//    }
+
+    public function showEditBrand($id)
+    {
         $brandDetails = Brand::where(['id'=>$id])->first();
         return view('admin.brands.edit_brand')->with(compact('brandDetails'));
+    }
+
+    public function editBrand(RequestValidateBrand $request, $id = null)
+    {
+
+            $data = $request->all();
+            //dd($data);
+            Brand::where(['id'=>$id])->update(['name'=>$data['brand_name']]);
+            return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands Update Successfully');
+           //echo "<pre>"; print_r($validatedData); die;
     }
 
     public function deleteBrand($id = null){
