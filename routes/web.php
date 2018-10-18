@@ -57,7 +57,11 @@ Route::group(['middleware' => ['auth']], function(){
 
     //cars Route (Admin)
 
-    Route::match(['get', 'post'], '/admin/add-car', 'CarController@addCar');
+    Route::get('/admin/add-car', 'CarController@showAddCar');
+    Route::post('/admin/add-car', 'CarController@addCar');
+    //products Route (Admin)
+
+    Route::match(['get', 'post'], '/admin/add-product', 'ProductsController@addProduct');
 
 
 

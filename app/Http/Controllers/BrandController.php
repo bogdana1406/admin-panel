@@ -23,19 +23,6 @@ class BrandController extends Controller
 //           //echo "<pre>"; print_r($data); die;
     }
 
-//    public function addBrand(Request $request)
-//    {
-//        if($request->isMethod('post')){
-//           $data = $request->all();
-//           $brand = new Brand;
-//           $brand->name = $data['brand_name'];
-//           $brand->save();
-//           return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands added Successfully');
-//           //echo "<pre>"; print_r($data); die;
-//        }
-//       return view('admin.brands.add_brand');
-//    }
-
     public function showEditBrand($id)
     {
         $brandDetails = Brand::where(['id'=>$id])->first();
