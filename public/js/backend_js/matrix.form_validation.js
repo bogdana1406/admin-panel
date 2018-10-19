@@ -99,6 +99,12 @@ $(document).ready(function(){
             },
             price:{
                 required:true
+            },
+            image:{
+                required:true
+            },
+            description:{
+                required:true
             }
         },
         errorClass: "help-inline",
@@ -119,9 +125,9 @@ $(document).ready(function(){
             brand_id:{
                 required:true
             },
-            // model:{
-            //     required:true
-            // },
+            model:{
+                required:true
+            },
             seats:{
                 required:true
             },
@@ -138,6 +144,9 @@ $(document).ready(function(){
                 required:true
             },
             price:{
+                required:true
+            },
+            image:{
                 required:true
             }
         },

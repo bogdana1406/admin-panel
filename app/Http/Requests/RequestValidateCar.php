@@ -25,7 +25,7 @@ class RequestValidateCar extends FormRequest
     {
         return [
             'brand_id'=>'required|exists:brands,id',
-            'model'=>'required',
+            'model'=>'required|string|max:50',
             'seats'=>'required|integer',
             'doors'=>'required|integer',
             'transmission_types'=>'required|in:automatic,manual',
@@ -38,8 +38,9 @@ class RequestValidateCar extends FormRequest
     public function messages()
 {
     return [
-        'title.required' => 'A title is required',
-        'body.required'  => 'A message is required',
+        'brand_id.exists' => 'you should choose brand',
+        'engine_id.exists' => 'you should choose type of engines',
+
     ];
 }
 }
