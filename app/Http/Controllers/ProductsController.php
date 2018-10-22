@@ -56,7 +56,8 @@ class ProductsController extends Controller
             //$product->image = '';
             $product->save();
             //dd($product);
-            return redirect()->back()->with('flash_massage_success', 'Product has been added successfully');
+           // return redirect()->back()->with('flash_massage_success', 'Product has been added successfully');
+            return redirect('/admin/view-products')->with('flash_massage_success', 'Car has been added successfully');
     }
         $categories = Category::where(['parent_id'=>0])->get();
         $categories_dropdown = "<option selected disabled>Select</option>";
@@ -67,8 +68,26 @@ class ProductsController extends Controller
             foreach ($sub_categories as $sub_cat){
                 $categories_dropdown .= "<option value = '".$sub_cat->id."'>&nbsp;--&nbsp;".$sub_cat->name."</option>";
         }
+        }
+       return view('admin.products.add_product')->with(compact('categories_dropdown'));
+
+    }
+
+    public function viewProducts()
+    {
+        $products = Product::get();
+
+        $products = json_decode($products);
+       // echo "<pre>"; print_r($products); die;
+        //dd($products[1]);
+        //dd(json_decode($products));
+        //$products = json_decode($products);
+        foreach ($products as $key => $val){
+            $category_name = Category::where(['id' =>$val->category_id])->first();
+            $products[$key]->category_name = $category_name->name;
 
         }
-        return view('admin.products.add_product')->with(compact('categories_dropdown'));
+        //echo "<pre>"; print_r($products); die;
+        return view('admin.products.view_products')->with(compact('products'));
     }
 }

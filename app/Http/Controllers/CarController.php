@@ -26,22 +26,7 @@ class CarController extends Controller
     public function addCar(RequestValidateCar $request)
     {
         $data = $request->except('_token');
-//        $car = new Car;
-//        $car->brand_id = $data['brand_id'];
-//        $car->model = $data['model'];
-//        $car->seats = $data['seats'];
-//        $car->doors = $data['doors'];
-//        $car->transmission_types = $data['transmission_types'];
-//        $car->year = $data['year'];
-//        $car->engine_id = $data['engine_id'];
-//        $car->price = $data['price'];
-//        $car->image = $data['image'] =;
-//        $car->about = $data['about'];
-//        $car->description = $data['description'];
-//        $car->save();
 
-
-          $car = Car::create($data);
 
         if($request->hasFile('image')){
             $image_tmp = Input::file('image');
@@ -55,20 +40,26 @@ class CarController extends Controller
                 Image::make($image_tmp)->save($large_image_path);
                 Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
                 Image::make($image_tmp)->resize(300,300)->save($small_image_path);
-                $car->image = $filename;
+
+                $data['image'] = $filename;
             }
         }
+        $car = Car::create($data);
 
-            if($car){
-                return redirect()->back()->with('flash_massage_success', 'Car has been added successfully');
+
+        if($car){
+                return redirect('/admin/view-cars')->with('flash_massage_success', 'Car has been added successfully');
             }else{
                 return redirect()->back()->with('flash_massage_error', 'Something was wrong');
+                }
             }
-       //return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands added Successfully');
-        //return redirect()->back()->with('flash_massage_success', 'Product has been added successfully');
-       //return redirect()->back()->with('flash_massage_success', 'Car has been added successfully');
-    }
 
+
+        public function viewCars()
+        {
+            $cars = Car::all();
+            return view('admin.cars.view_cars')->with(compact('cars'));
+        }
 
 }
 
