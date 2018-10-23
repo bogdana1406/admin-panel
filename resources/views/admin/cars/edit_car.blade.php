@@ -43,9 +43,9 @@
                                     <label class="control-label">Brand</label>
                                     <div class="controls">
                                         <select name="brand_id" style="width: 220px">
-                                            <option value="{{ $carDetails->brand->id }}">{{ $carDetails->brand->name }}</option>
+                                            {{--<option value="{{ $carDetails->brand->id }}">{{ $carDetails->brand->name }}</option>--}}
                                             @foreach ($brands as $id=>$name)
-                                                <option value="{{$id}}">{{ $name }}</option>
+                                                <option {{$id==old('brand_id')??$carDetails->brand->id ? "selected": ""}} value="{{$id}}">{{ $name }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('brand_id'))
@@ -58,7 +58,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Model</label>
                                     <div class="controls">
-                                        <input type="text" name="model" id="model" value="{{ $carDetails->model }}">
+                                        <input type="text" name="model" id="model" value="{{old('model')??$carDetails->model }}">
                                         @if($errors->has('model'))
                                             <span class="alert alert-danger" role="alert">
                                               {{$errors->first('model')}}
@@ -93,9 +93,9 @@
                                     <label class="control-label">Transmission_types</label>
                                     <div class="controls">
                                         <select name="transmission_types" style="width: 220px">
-                                            <option>{{ $carDetails->transmission_types }}</option>
-                                            <option>automatic</option>
-                                            <option>manual</option>
+                                            {{--<option>{{ $carDetails->transmission_types }}</option>--}}
+                                            <option {{"automatic"==old('transmission_types')??$carDetails->transmission_types ? "selected":""}}>automatic</option>
+                                            <option {{"manual"==old('transmission_types')??$carDetails->transmission_types ? "selected":""}}>manual</option>
                                         </select>
                                         @if($errors->has('transmission_types'))
                                             <span class="alert alert-danger" role="alert">
@@ -107,7 +107,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Year</label>
                                     <div class="controls">
-                                        <input type="text" name="year" id="year" value="{{old('year')??$carDetails->year}}">
+                                        <input type="text" name="year" id="year" value="{{ old('year')??$carDetails->year }}">
                                         @if($errors->has('year'))
                                             <span class="alert alert-danger" role="alert">
                                               {{$errors->first('year')}}
@@ -119,9 +119,9 @@
                                     <label class="control-label">Engine</label>
                                     <div class="controls">
                                         <select name="engine_id" style="width: 220px">
-                                            <option value="{{ $carDetails->engine->id }}">{{ $carDetails->engine->name }}</option>
+                                            {{--<option value="{{ $carDetails->engine->id }}">{{ $carDetails->engine->name }}</option>--}}
                                             @foreach ($engines as $id=>$name)
-                                                <option value="{{$id}}">{{ $name }}</option>
+                                                <option {{$id==old('engine_id')??$carDetails->engine->id ? "selected":""}} value="{{$id}}">{{ $name }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('engine_id'))
@@ -146,20 +146,29 @@
                                 <div class="control-group">
                                     <label class="control-label">About</label>
                                     <div class="controls">
-                                        <textarea type="text" name="about" id="about">{{ $carDetails->about }}</textarea>
+                                        <textarea type="text" name="about" id="about">{{ old('about')?? $carDetails->about }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
-                                        <textarea type="text" name="description" id="description">{{  $carDetails->description}}</textarea>
+                                        <textarea type="text" name="description" id="description">{{ old('description')?? $carDetails->description}}</textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <input type="file" name="image" id="image">
+                                        <input type="hidden" name="current_image" value="{{$carDetails->image}}">
+
+                                        {{--@if(!empty($car->image))--}}
+                                            {{--<img src="{{ asset('/images/backend_images/cars/small/'.$car->image) }}" style="width:30px;">--}}
+                                        {{--@endif--}}
+                                    @if(!empty($carDetails->image))
+                                        <img style="width:30px;" src="{{ asset('/images/backend_images/cars/small/'.$carDetails->image) }}" > |
+                                        <a href="{{ url('/admin/delete-car-image/'.$carDetails->id) }}">Delete</a>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-actions">
