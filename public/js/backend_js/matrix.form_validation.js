@@ -100,9 +100,6 @@ $(document).ready(function(){
             price:{
                 required:true
             },
-            image:{
-                required:true
-            },
             description:{
                 required:true
             }
@@ -146,9 +143,6 @@ $(document).ready(function(){
             price:{
                 required:true
             }
-            // image:{
-            //     required:true
-            // }
         },
         errorClass: "help-inline",
         errorElement: "span",
@@ -262,6 +256,45 @@ $(document).ready(function(){
         }
     });
 
+    //Edit Car Validation
+
+    $("#edit_car").validate({
+        rules:{
+            brand_id:{
+                required:true
+            },
+            model:{
+                required:true
+            },
+            seats:{
+                required:true
+            },
+            doors:{
+                required:true
+            },
+            trasnsmission_types:{
+                required:true
+            },
+            year:{
+                required:true
+            },
+            engine_id:{
+                required:true
+            },
+            price:{
+                required:true
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
+    });
 
 
 	

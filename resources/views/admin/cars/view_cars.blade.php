@@ -63,9 +63,32 @@
                                                 @endif
                                         </td>
                                         <td class="center">
+                                            <div class="fr"><a href="#myModal{{ $car->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                                             <a href="{{ url('/admin/edit-car/'.$car->id) }}" class="btn btn-primary btn-mini">Edit</a>
-                                            <a data-id="{{$car->id}}" href="#" class="btn btn-danger btn-mini delCat">Delete</a></td>
+                                            <a data-id="{{$car->id}}" href="#" class="btn btn-danger btn-mini delCat">Delete</a>
+                                        </td>
                                     </tr>
+
+                                        <div id="myModal{{ $car->id }}" class="modal hide">
+                                            <div class="modal-header">
+                                                <button data-dismiss="modal" class="close" type="button">×</button>
+                                                <h3>{{ $car->model }} Full details</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Car ID:            {{ $car->id }}</p>
+                                                <p>Brand:             {{ $car->brand->name }}</p>
+                                                <p>Seats:             {{ $car->seats }}</p>
+                                                <p>Doors:             {{ $car->doors }}</p>
+                                                <p>Transmission type: {{ $car->transmission_types }}</p>
+                                                <p>Year:              {{ $car->year }}</p>
+                                                <p>Engine:            {{ $car->engine->name }}</p>
+                                                <p>Description:       {{ $car->description }}</p>
+                                                <p>About:             {{ $car->about }}</p>
+                                                <p>Price:             {{ $car->price }}</p>
+                                            </div>
+                                        </div>
+
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -76,5 +99,6 @@
         </div>
     </div>
     </div>
+
 
 @endsection

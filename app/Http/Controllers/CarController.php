@@ -55,6 +55,26 @@ class CarController extends Controller
             }
 
 
+        public function showEditCar($id)
+        {
+            $brands = Brand::pluck('name', 'id');
+            $engines = Engine::pluck('name', 'id');
+            $carDetails = Car::where(['id'=>$id])->first();
+            return view('admin.cars.edit_car')->with(['carDetails'=>$carDetails,'brands'=>$brands, 'engines'=>$engines]);
+        }
+
+        public function editCar(RequestValidateCar $request, $id = null)
+        {
+            $data = $request->all();
+           //dd($data);
+            Car::where(['id'=>$id])->update(['model'=>$data['model'],'brand_id'=>$data['brand_id'],
+                'seats'=>$data['seats'],'doors'=>$data['doors'],'transmission_types'=>$data['transmission_types'],
+                'year'=>$data['year'],'engine_id'=>$data['engine_id'],'price'=>$data['price'],'about'=>$data['about'],
+                'description'=>$data['description']]);
+            //return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands Update Successfully');
+            return redirect('/admin/view-cars')->with('flash_massage_success', 'Brands Update Successfully');
+        }
+
         public function viewCars()
         {
             $cars = Car::all();
