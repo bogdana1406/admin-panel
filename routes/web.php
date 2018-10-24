@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/admin/edit-car/{id}', 'CarController@editCar');
     Route::get('/admin/view-cars', 'CarController@viewCars');
     Route::get('/admin/delete-car-image/{id}', 'CarController@deleteCarImage');
+    //Route::match(['get', 'post'], '/admin/delete-car/{id}', 'CarController@deleteCar');
+    Route::get('/admin/delete-car/{id}', 'CarController@deleteCar');
 
 
     //products Route (Admin)

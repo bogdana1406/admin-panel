@@ -107,6 +107,23 @@ class CarController extends Controller
           Car::where(['id'=>$id])->update(['image'=>null]);
           return redirect()->back()->with('flash_massage_success', 'Car Image has been delete successfully');
         }
+
+        public function deleteCar($id = null)
+        {
+            if (!empty($id)) {
+                Car::where(['id' => $id])->delete();
+                return redirect()->back()->with('flash_massage_success', 'Car has been delete successfully');
+            }
+
+        }
+
+
+//    public function deleteCar($id = null)
+//    {
+//            Car::where(['id' => $id])->delete();
+//            return redirect()->back()->with('flash_massage_success', 'Car has been delete successfully');
+//        }
+
 }
 
 

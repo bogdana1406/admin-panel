@@ -65,7 +65,12 @@
                                         <td class="center">
                                             <div class="fr"><a href="#myModal{{ $car->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                                             <a href="{{ url('/admin/edit-car/'.$car->id) }}" class="btn btn-primary btn-mini">Edit</a>
-                                            <a data-id="{{$car->id}}" href="#" class="btn btn-danger btn-mini delCat">Delete</a>
+                                                {{--<a rel="{{ $car->id }}" rel1="delete-car"--}}
+                                                   {{--href="javascript:"--}}
+                                            {{--class="btn btn-danger btn-mini deleteRecord">Delete</a>--}}
+
+                                            <a data-id="{{$car->id}}" href="#" class="btn btn-danger btn-mini delCar">Delete</a>
+
                                         </td>
                                     </tr>
 

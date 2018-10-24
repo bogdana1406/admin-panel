@@ -400,4 +400,36 @@ $(document).ready(function(){
         return false;
     });
 
+
+    // Delete Car Validation (for delete without sweet button)
+
+    $(".delCar").click(function(event){
+
+        if(confirm('Are you sure you want to delete this Car?')){
+
+            window.location.href = '/admin/delete-car/' + event.target.dataset.id;
+            return true;
+
+        }
+        return false;
+    });
+
+
+
+    //Delete with sweet alert (view_cars first link)
+    // $(".deleteRecord").click(function(){
+    //     var id = $(this).attr('rel');
+    //     var deleteFunction = $(this).attr('rel1');
+    //     swal({
+    //         title: "Are you sure?",
+    //         text: "You will not be able to recover this record again",
+    //         showCancelButton: true,
+    //         confirmButtonClass: "btn-danger",
+    //         confirmButtonText: "Yes, delete it"
+    //     },
+    //     function(){
+    //         window.location.href = "/admin/" + deleteFunction + "/" + id;
+    //     });
+    // });
+
 });
