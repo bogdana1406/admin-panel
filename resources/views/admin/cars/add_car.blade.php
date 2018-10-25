@@ -152,6 +152,7 @@
                                         <input type="file" name="image" id="image">
                                     </div>
                                 </div>
+
                                 <div class="form-actions">
                                     <input type="submit" value="Add Car" class="btn btn-success">
                                 </div>

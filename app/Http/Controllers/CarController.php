@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CarsImage;
+use App\Http\Requests\UploadRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\RequestValidateCar;
 use Auth;
@@ -117,12 +119,59 @@ class CarController extends Controller
 
         }
 
-
-//    public function deleteCar($id = null)
-//    {
-//            Car::where(['id' => $id])->delete();
-//            return redirect()->back()->with('flash_massage_success', 'Car has been delete successfully');
+//        public function uploadForm($id=null)
+//        {
+//            $carDetails = Car::where(['id'=>$id])->first();
+//            return view('admin.cars.upload_Form')->with(['carDetails'=>$carDetails]);
 //        }
+//
+//    public function uploadSubmit(Request $request, $id=null)
+//        {
+//
+//            $car = Car::where(['id'=>$id])->first();
+//            $data = [];
+//
+//            if($request->hasFile('images'))
+//                $files = $request->file('images');
+//            foreach ($files as $file){
+//                foreach ($request->images as $image) {
+//                $extension = $file->getClientOriginalExtension();
+//                $filename = rand(111, 99999).".".$extension;
+//
+//                    $filepath = $image->storeAs('images/cars'.$car->id, $filename);
+//                    $data[] = [
+//                        'car_id' => $car->id,
+//                        'filename' => $filepath
+//                    ];
+//                }
+//               // dd($data);
+//                CarsImage::insert($data);
+//                return redirect('/admin/edit-car/'.$car->id);
+//            }
+//
+//       }
+
+
+
+
+//        public function uploadSubmit(Request $request, $id=null)
+//        {
+//            $car = Car::where(['id'=>$id])->first();
+//            $data = [];
+//            foreach ($request->images as $image) {
+//                $filename = $image->store('images/cars'.$car->id);
+//                $data[] = [
+//                    'car_id' => $car->id,
+//                    'filename' => $filename
+//                ];
+//            }
+//            dd($data);
+//
+//            CarsImage::insert($data);
+//            return 'Upload successful!';
+//        }
+
+
 
 }
 

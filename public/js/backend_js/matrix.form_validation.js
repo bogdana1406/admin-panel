@@ -414,7 +414,18 @@ $(document).ready(function(){
         return false;
     });
 
+    // Delete CarImageRecord Validation (for delete without sweet button)
 
+    $(".delCarsImageRecord").click(function(event){
+
+        if(confirm('Are you sure you want to delete this Car Image?')){
+
+            window.location.href = '/admin/delete-car-image-record/' + event.target.dataset.id;
+            return true;
+
+        }
+        return false;
+    });
 
     //Delete with sweet alert (view_cars first link)
     // $(".deleteRecord").click(function(){

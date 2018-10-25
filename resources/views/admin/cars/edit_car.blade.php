@@ -161,7 +161,6 @@
                                     <div class="controls">
                                         <input type="file" name="image" id="image">
                                         <input type="hidden" name="current_image" value="{{$carDetails->image}}">
-
                                         {{--@if(!empty($car->image))--}}
                                             {{--<img src="{{ asset('/images/backend_images/cars/small/'.$car->image) }}" style="width:30px;">--}}
                                         {{--@endif--}}
@@ -171,10 +170,13 @@
                                         @endif
                                     </div>
                                 </div>
+                                        {{--<a href="{{ url('/admin/upload-car-images/'.$carDetails->id) }}" class="btn btn-primary btn-mini">Upload Images</a>--}}
+
                                 <div class="form-actions">
                                     <input type="submit" value="Edit Car" class="btn btn-success">
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

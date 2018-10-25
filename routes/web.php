@@ -67,6 +67,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/admin/delete-car/{id}', 'CarController@deleteCar');
 
 
+    //Images upload Route
+    Route::get('/admin/upload-car-images/{id}', 'CarsImageController@uploadForm');
+    Route::post('/admin/upload-car-images/{id}', 'CarsImageController@uploadSubmit');
+    Route::get('/admin/view-images-table', 'CarsImageController@showImagesTable');
+    Route::get('/admin/delete-car-image-record/{id}', 'CarsImageController@deleteCarsImageRecord');
+
+
     //products Route (Admin)
     Route::match(['get', 'post'], '/admin/add-product', 'ProductsController@addProduct');
     Route::get('/admin/view-products', 'ProductsController@viewProducts');
