@@ -1,10 +1,4 @@
-@if (count($errors) > 0)
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
+
 <form action="{{ url('/admin/upload-car-images-form') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
 
@@ -20,11 +14,23 @@
                     <option value="{{ $id }}">{{ $model }}</option>
                 @endforeach
             </select>
+
+            @if($errors->has('car_id'))
+                <span class="alert alert-danger" role="alert">
+                    {{$errors->first('car_id')}}
+                </span>
+            @endif
         </div>
     </div>
      <br /><br />
     <input type="file" name="images[]" multiple />
     <br /><br />
+
     <input type="submit" value="Upload" />
+    @if($errors->has('images[]'))
+        <span class="alert alert-danger" role="alert">
+            {{$errors->first('images[]')}}
+        </span>
+    @endif
 </form>
 

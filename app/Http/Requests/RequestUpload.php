@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestUploadForm extends FormRequest
+class RequestUpload extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,7 @@ class RequestUploadForm extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'car_id' => 'required|exists:cars,id',
             'images[]' => 'required',
         ];
     }
@@ -33,8 +31,7 @@ class RequestUploadForm extends FormRequest
     public function messages()
     {
         return [
-            'car_id.exists' => 'Please, choose Car',
-            'images[].required' => 'Please, choose Image',
+            'images[].required' => 'You should choose Image',
 
         ];
     }

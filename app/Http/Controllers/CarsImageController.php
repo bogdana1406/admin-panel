@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CarsImage;
-use App\Http\Requests\RequestUploadForm;
+use App\Http\Requests\RequestUpload;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
@@ -22,7 +22,7 @@ class CarsImageController extends Controller
         return view('admin.images.upload_Form')->with(['carDetails'=>$carDetails]);
     }
 
-    public function uploadSubmit(Request $request, $id=null)
+    public function uploadSubmit(RequestUpload $request, $id=null)
     {
 
         $car = Car::where(['id'=>$id])->first();
@@ -62,8 +62,6 @@ class CarsImageController extends Controller
         }
 
     }
-
-
 
 
 

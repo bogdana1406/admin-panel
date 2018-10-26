@@ -188,6 +188,11 @@
                                 <input type="file" name="images[]" multiple />
                                 <br /><br />
                                 <input type="submit" value="Upload" />
+                                @if($errors->has('images[]'))
+                                    <span class="alert alert-danger" role="alert">
+                                     {{$errors->first('images[]')}}
+                                    </span>
+                                @endif
                             </form>
                         </div>
                     </div>
