@@ -44,7 +44,7 @@
                                         <td>{{ $carsImage->car->model }}</td>
                                         <td>
                                             @if(!empty($carsImage->filename))
-                                                <img src="{{ asset('/storage/'.$carsImage->filename) }}" style="width:50px;">
+                                                <img src="{{ asset($carsImage->filename) }}" style="width:50px;">
                                                 {{--src="{{ asset('/images/backend_images/cars/small/'.$car->image) }}"--}}
                                             @endif
                                         </td>

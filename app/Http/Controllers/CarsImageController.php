@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\CarsImage;
 use App\Http\Requests\UploadRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\RequestValidateCar;
 use Auth;
 use Session;
 use App\Brand;
@@ -36,7 +35,7 @@ class CarsImageController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = rand(111, 99999).".".$extension;
 
-                $filepath = $image->storeAs('public/images/cars'.$car->id, $filename);
+                $filepath = $image->storeAs('files/images/cars'.$car->id, $filename);
                 $data[] = [
                     'car_id' => $car->id,
                     'filename' => $filepath
@@ -62,6 +61,65 @@ class CarsImageController extends Controller
             return redirect()->back()->with('flash_massage_success', 'Car Image has been delete successfully');
         }
 
+    }
+
+
+
+
+
+    public function uploadImagesForm()
+    {
+        $carDetails = Car::pluck('model', 'id');
+        //dd($carDetails);
+        return view('admin.images.upload_Form')->with(['carDetails'=>$carDetails]);
+    }
+
+    public function uploadFormSubmit(Request $request)
+    {
+
+            $data = $request->all();
+            $dataCarImage = [];
+
+            if($request->hasFile('images'))
+                $files = $request->file('images');
+            foreach ($files as $file){
+                foreach ($request->images as $image) {
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = rand(111, 99999).".".$extension;
+
+                    $filepath = $image->storeAs('files/images/cars'.$data['car_id'], $filename);
+                    $dataCarImage[] = [
+                        'car_id' => $data['car_id'],
+                        'filename' => $filepath
+                    ];
+//                    CarsImage::create([
+//                        'car_id' =>$data['car_id'],
+//                        'filename'=>$filepath
+//                    ]);
+                }
+                CarsImage::insert($dataCarImage);
+                return redirect('/admin/view-images-table/');
+            }
+
+
+
+
+
+//        $data = $request->all();
+//        //$carsImage = new CarsImage;
+//        //$carsImage->car_id = $data['car_id'];
+//        //dd($data['car_id']);
+//
+//
+//        foreach($request->images as $image){
+//            $filename = $image->store('images');
+//            CarsImage::create([
+//                'car_id' =>$data['car_id'],
+//                'filename'=>$filename
+//            ]);
+//        }
+//
+//        return 'Upload successful';
     }
 }
 

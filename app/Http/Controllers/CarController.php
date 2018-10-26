@@ -95,7 +95,7 @@ class CarController extends Controller
                 'year'=>$data['year'],'engine_id'=>$data['engine_id'],'price'=>$data['price'],'about'=>$data['about'],
                 'description'=>$data['description'],'image'=>$filename]);
             //return redirect('/admin/view-brands')->with('flash_massage_success', 'Brands Update Successfully');
-            return redirect('/admin/view-cars')->with('flash_massage_success', 'Brands Update Successfully');
+            return redirect('/admin/view-cars')->with('flash_massage_success', 'Car Update Successfully');
         }
 
         public function viewCars()
@@ -118,58 +118,6 @@ class CarController extends Controller
             }
 
         }
-
-//        public function uploadForm($id=null)
-//        {
-//            $carDetails = Car::where(['id'=>$id])->first();
-//            return view('admin.cars.upload_Form')->with(['carDetails'=>$carDetails]);
-//        }
-//
-//    public function uploadSubmit(Request $request, $id=null)
-//        {
-//
-//            $car = Car::where(['id'=>$id])->first();
-//            $data = [];
-//
-//            if($request->hasFile('images'))
-//                $files = $request->file('images');
-//            foreach ($files as $file){
-//                foreach ($request->images as $image) {
-//                $extension = $file->getClientOriginalExtension();
-//                $filename = rand(111, 99999).".".$extension;
-//
-//                    $filepath = $image->storeAs('images/cars'.$car->id, $filename);
-//                    $data[] = [
-//                        'car_id' => $car->id,
-//                        'filename' => $filepath
-//                    ];
-//                }
-//               // dd($data);
-//                CarsImage::insert($data);
-//                return redirect('/admin/edit-car/'.$car->id);
-//            }
-//
-//       }
-
-
-
-
-//        public function uploadSubmit(Request $request, $id=null)
-//        {
-//            $car = Car::where(['id'=>$id])->first();
-//            $data = [];
-//            foreach ($request->images as $image) {
-//                $filename = $image->store('images/cars'.$car->id);
-//                $data[] = [
-//                    'car_id' => $car->id,
-//                    'filename' => $filename
-//                ];
-//            }
-//            dd($data);
-//
-//            CarsImage::insert($data);
-//            return 'Upload successful!';
-//        }
 
 
 

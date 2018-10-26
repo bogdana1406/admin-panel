@@ -30,12 +30,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::match(['get', 'post'], '/admin/update-pwd', 'AdminController@updatePassword');
 
 
-    // categories Route (Admin)
-    Route::match(['get', 'post'], '/admin/add-category', 'CategoryController@addCategory');
-    Route::match(['get', 'post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
-    Route::match(['get', 'post'], '/admin/delete-category/{id}', 'CategoryController@deleteCategory');
-    Route::get('/admin/view-categories', 'CategoryController@viewCategories');
-
     //brands Route (Admin)
 
     Route::get('/admin/add-brand', 'BrandController@showAddBrand');
@@ -70,13 +64,16 @@ Route::group(['middleware' => ['auth']], function(){
     //Images upload Route
     Route::get('/admin/upload-car-images/{id}', 'CarsImageController@uploadForm');
     Route::post('/admin/upload-car-images/{id}', 'CarsImageController@uploadSubmit');
+
+
+    Route::get('/admin/upload-car-images-form', 'CarsImageController@uploadImagesForm');
+    Route::post('/admin/upload-car-images-form', 'CarsImageController@uploadFormSubmit');
+
+
     Route::get('/admin/view-images-table', 'CarsImageController@showImagesTable');
     Route::get('/admin/delete-car-image-record/{id}', 'CarsImageController@deleteCarsImageRecord');
 
 
-    //products Route (Admin)
-    Route::match(['get', 'post'], '/admin/add-product', 'ProductsController@addProduct');
-    Route::get('/admin/view-products', 'ProductsController@viewProducts');
 
 
 

@@ -176,7 +176,20 @@
                                     <input type="submit" value="Edit Car" class="btn btn-success">
                                 </div>
                             </form>
-
+                            <form action="/admin/upload-car-images/{{$carDetails->id}}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{--Car model:--}}
+                                <br />
+                                <input type="hidden" name="id_car_image" value="{{ $carDetails->id }}"/>
+                                <br /><br />
+                                <input type="hidden" name="name_car_image" value="{{ $carDetails->model }}"/>
+                                <br /><br />
+                                Car Images (can attach more than one):
+                                <br />
+                                <input type="file" name="images[]" multiple />
+                                <br /><br />
+                                <input type="submit" value="Upload" />
+                            </form>
                         </div>
                     </div>
                 </div>

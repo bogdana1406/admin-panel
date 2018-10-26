@@ -1,21 +1,23 @@
-@if (count($errors) > 0)
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
-<form action="/admin/upload-car-images/{{$carDetails->id}}" method="post" enctype="multipart/form-data">
+ <form action="{{ url('/admin/upload-car-images-form') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
-    Car model:
-    <br />
-    <input type="text" name="id_car_image" value="{{ $carDetails->id }}"/>
-    <br /><br />
-    <input type="text" name="name_car_image" value="{{ $carDetails->model }}"/>
-    <br /><br />
-    Car Images (can attach more than one):
-    <br />
+
+    <div class="control-group">
+        <br /><br />
+        <label class="control-label">Car Model</label>
+        <br /><br />
+
+        <div class="controls">
+            <select name="car_id" style="width: 220px">
+                <option>Select Car model</option>
+                @foreach ($carDetails as $id=>$model)
+                    <option value="{{ $id }}">{{ $model }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+     <br /><br />
     <input type="file" name="images[]" multiple />
     <br /><br />
     <input type="submit" value="Upload" />
 </form>
+
