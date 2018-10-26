@@ -1,4 +1,11 @@
- <form action="{{ url('/admin/upload-car-images-form') }}" method="post" enctype="multipart/form-data">
+@if (count($errors) > 0)
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+<form action="{{ url('/admin/upload-car-images-form') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <div class="control-group">
@@ -7,7 +14,7 @@
         <br /><br />
 
         <div class="controls">
-            <select name="car_id" style="width: 220px">
+            <select name="car_id" id="car_id" style="width: 220px">
                 <option>Select Car model</option>
                 @foreach ($carDetails as $id=>$model)
                     <option value="{{ $id }}">{{ $model }}</option>

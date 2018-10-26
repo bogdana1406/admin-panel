@@ -45,7 +45,6 @@
                                         <td>
                                             @if(!empty($carsImage->filename))
                                                 <img src="{{ asset($carsImage->filename) }}" style="width:50px;">
-                                                {{--src="{{ asset('/images/backend_images/cars/small/'.$car->image) }}"--}}
                                             @endif
                                         </td>
                                         <td class="center">

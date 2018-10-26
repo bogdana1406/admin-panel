@@ -193,6 +193,26 @@ $(document).ready(function(){
         }
     });
 
+
+    //Upload Form Validation
+
+    $("#car_id").validate({
+        rules:{
+            brand_name:{
+                required:true
+            }
+        },
+        errorClass: "help-inline",
+        errorElement: "span",
+        highlight:function(element, errorClass, validClass) {
+            $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents('.control-group').removeClass('error');
+            $(element).parents('.control-group').addClass('success');
+        }
+    });
+
     //Edit Category Validation
 
     $("#edit_category").validate({

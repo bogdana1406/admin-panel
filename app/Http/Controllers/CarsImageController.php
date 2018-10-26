@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CarsImage;
-use App\Http\Requests\UploadRequest;
+use App\Http\Requests\RequestUploadForm;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
@@ -74,10 +74,11 @@ class CarsImageController extends Controller
         return view('admin.images.upload_Form')->with(['carDetails'=>$carDetails]);
     }
 
-    public function uploadFormSubmit(Request $request)
+    public function uploadFormSubmit(RequestUploadForm $request)
     {
 
             $data = $request->all();
+            //dd($data);
             $dataCarImage = [];
 
             if($request->hasFile('images'))

@@ -12,10 +12,3 @@
         <li class=""><a title="" href="{{ url('/logout') }}"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
     </ul>
 </div>
-<!--close-top-Header-menu-->
-<!--start-top-serch-->
-{{--<div id="search">--}}
-    {{--<input type="text" placeholder="Search here..."/>--}}
-    {{--<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>--}}
-{{--</div>--}}
-<!--close-top-serch-->

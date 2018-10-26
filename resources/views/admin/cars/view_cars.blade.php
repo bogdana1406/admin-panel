@@ -3,8 +3,7 @@
 
     <div id="content">
         <div id="content-header">
-            <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom">
-                    <i class="icon-home"></i> Home</a> <a href="#">Cars</a> <a href="#" class="current">View Cars</a> </div>
+            <div id="breadcrumb"> <a href="#">Cars</a> <a href="#" class="current">View Cars</a> </div>
             <h1>Cars</h1>
             @if(Session::has('flash_massage_error'))
                 <div class="alert alert-danger alert-block">
