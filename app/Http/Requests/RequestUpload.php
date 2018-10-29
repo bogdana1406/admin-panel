@@ -21,18 +21,15 @@ class RequestUpload extends FormRequest
      *
      * @return array
      */
+
+
     public function rules()
     {
-        return [
-            'images[]' => 'required',
-        ];
+        $images = count($this->input('images'));
+        foreach(range(0, $images) as $index) {
+            $rules['images.' . $index] = 'required|image|mimes:jpeg,bmp,png|max:2000';
+        }
+        return $rules;
     }
 
-    public function messages()
-    {
-        return [
-            'images[].required' => 'You should choose Image',
-
-        ];
-    }
 }

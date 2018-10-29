@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\CarsImage;
 use App\Http\Requests\RequestUpload;
+use App\Http\Requests\RequestUploadForm;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
-use App\Brand;
-use App\Engine;
 use App\Car;
 use Illuminate\Support\Facades\Input;
 use Image;
@@ -57,7 +56,15 @@ class CarsImageController extends Controller
     public function deleteCarsImageRecord($id = null)
     {
         if (!empty($id)) {
+
+//            $imageRecord = CarsImage::where(['id' => $id])->value('filename');
+//            dd($imageRecord);
+
+
+
+
             CarsImage::where(['id' => $id])->delete();
+
             return redirect()->back()->with('flash_massage_success', 'Car Image has been delete successfully');
         }
 

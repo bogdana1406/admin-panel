@@ -113,6 +113,13 @@ class CarController extends Controller
         public function deleteCar($id = null)
         {
             if (!empty($id)) {
+
+//                $car = Car::where(['id' => $id])->value('id');
+//                $car->carsImage()->where('car_id', )->get();
+
+
+
+
                 Car::where(['id' => $id])->delete();
                 return redirect()->back()->with('flash_massage_success', 'Car has been delete successfully');
             }

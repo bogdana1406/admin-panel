@@ -182,17 +182,26 @@
                                 <input type="hidden" name="id_car_image" value="{{ $carDetails->id }}"/>
                                 <br /><br />
                                 <input type="hidden" name="name_car_image" value="{{ $carDetails->model }}"/>
+                                @if (count($errors) > 0)
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                                 <br /><br />
                                 Car Images (can attach more than one):
                                 <br />
-                                <input type="file" name="images[]" multiple />
+                                <input type="file" name="images[]"  multiple />
                                 <br /><br />
                                 <input type="submit" value="Upload" />
-                                @if($errors->has('images[]'))
-                                    <span class="alert alert-danger" role="alert">
-                                     {{$errors->first('images[]')}}
-                                    </span>
-                                @endif
+
+
+                                {{--@if($errors->has('images[]'))--}}
+                                    {{--<span class="alert alert-danger" role="alert">--}}
+                                     {{--{{$errors->first('images[]')}}--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </form>
                         </div>
                     </div>
