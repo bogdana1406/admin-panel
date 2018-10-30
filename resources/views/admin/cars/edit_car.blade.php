@@ -175,6 +175,8 @@
                                     <input type="submit" value="Edit Car" class="btn btn-success">
                                 </div>
                             </form>
+
+
                             <form action="/admin/upload-car-images/{{$carDetails->id}}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 {{--Car model:--}}

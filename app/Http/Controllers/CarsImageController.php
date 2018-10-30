@@ -6,6 +6,7 @@ use App\CarsImage;
 use App\Http\Requests\RequestUpload;
 use App\Http\Requests\RequestUploadForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use Session;
 use App\Car;
@@ -57,11 +58,10 @@ class CarsImageController extends Controller
     {
         if (!empty($id)) {
 
-//            $imageRecord = CarsImage::where(['id' => $id])->value('filename');
+            $imageRecord = CarsImage::where(['id' => $id])->value('filename');
 //            dd($imageRecord);
 
-
-
+            Storage::delete($imageRecord);
 
             CarsImage::where(['id' => $id])->delete();
 
@@ -93,7 +93,13 @@ class CarsImageController extends Controller
                     $extension = $file->getClientOriginalExtension();
                     $filename = rand(111, 99999).".".$extension;
 
-                    $filepath = $image->storeAs('files/images/cars'.$data['car_id'], $filename);
+                    $filepath = Storage::putFileAs(
+                        'files/images/cars'.$data['car_id'], $image, $filename
+                    );
+
+                    //$filepath = $image->storeAs('files/images/cars'.$data['car_id'], $filename);
+
+
                     $dataCarImage[] = [
                         'car_id' => $data['car_id'],
                         'filename' => $filepath

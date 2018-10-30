@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CarsImage;
 use App\Http\Requests\UploadRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\RequestValidateCar;
 use Auth;
@@ -106,25 +107,47 @@ class CarController extends Controller
 
         public function deleteCarImage($id = null)
         {
-          Car::where(['id'=>$id])->update(['image'=>null]);
+
+            $car = Car::find($id);
+            $filename = $car->image;
+            $existsLarge = Storage::disk('public')->exists('images/backend_images/cars/large/'.$filename);
+            if($existsLarge){
+               Storage::disk('public')->delete('images/backend_images/cars/large/'.$filename);
+            }
+            $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$filename);
+            if($existsMedium){
+                Storage::disk('public')->delete('images/backend_images/cars/medium/'.$filename);
+            }
+            $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$filename);
+            if($existsSmall){
+                Storage::disk('public')->delete('images/backend_images/cars/small/'.$filename);
+            }
+
+            //die;
+
+         $car->update(['image'=>null]);
           return redirect()->back()->with('flash_massage_success', 'Car Image has been delete successfully');
         }
 
         public function deleteCar($id = null)
         {
-            if (!empty($id)) {
 
-//                $car = Car::where(['id' => $id])->value('id');
-//                $car->carsImage()->where('car_id', )->get();
+             $car = Car::find($id);
+
+                if($car) {
+                    $carsImageRecords = $car->carsImage()->pluck('filename')->toArray();
+                    $deleteImg = Storage::delete($carsImageRecords);
+                        $car->carsImage()->delete();
+                        $car->delete();
 
 
+                }
 
-
-                Car::where(['id' => $id])->delete();
+//                Car::where(['id' => $id])->delete();
                 return redirect()->back()->with('flash_massage_success', 'Car has been delete successfully');
             }
 
-        }
+
 
 
 
