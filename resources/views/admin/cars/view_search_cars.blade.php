@@ -31,12 +31,12 @@
                                 <div class="control-group">
                                     <label class="control-label">Car name</label>
                                     <div class="controls">
-                                        <input type="text" name="name" id="name" value="{{old('name')}}">
-                                        @if($errors->has('name'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('name')}}
-                                            </span>
-                                        @endif
+                                        <select name="name" style="width: 220px">
+                                            <option>Select Car Name</option>
+                                            @foreach ($carDetails as $carDetail)
+                                                <option value="{{ $carDetail->name }}">{{ $carDetail->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -44,74 +44,65 @@
                                     <div class="controls">
                                         <select name="brand_id" style="width: 220px">
                                             <option>Select Brand</option>
-                                            @foreach ($brands as $id=>$name)
-                                                <option value="{{$id}}">{{ $name }}</option>
+                                            @foreach ($carBrands as $id=>$name)
+                                                <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
-                                        @if($errors->has('brand_id'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('brand_id')}}
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Model</label>
                                     <div class="controls">
-                                        <input type="text" name="model" id="model" value="{{old('model')}}">
-                                        @if($errors->has('model'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('model')}}
-                                            </span>
-                                        @endif
+                                        <select name="model" style="width: 220px">
+                                            <option>Select Model</option>
+                                            @foreach ($carDetails as $carDetail)
+                                                <option value="{{ $carDetail->model }}">{{ $carDetail->model }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Seats</label>
                                     <div class="controls">
-                                        <input type="text" name="seats" id="seats" value="{{old('seats')}}">
-                                        @if($errors->has('seats'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('seats')}}
-                                            </span>
-                                        @endif
+                                        <select name="seats" style="width: 220px">
+                                            <option>Select Seats</option>
+                                            @foreach ($carSeats as $carSeat)
+                                                <option value="{{ $carSeat }}">{{ $carSeat }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Doors</label>
                                     <div class="controls">
-                                        <input type="text" name="doors" id="doors" value="{{old('doors')}}">
-                                        @if($errors->has('doors'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('doors')}}
-                                            </span>
-                                        @endif
+                                        <select name="seats" style="width: 220px">
+                                            <option>Select Doors</option>
+                                            @foreach ($carDoors as $carDoor)
+                                                <option value="{{ $carDoor }}">{{ $carDoor }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Transmission_types</label>
+                                    <label class="control-label">TransmissionType</label>
                                     <div class="controls">
                                         <select name="transmission_types" style="width: 220px">
-                                            <option>Select Transmission_type</option>
-                                            <option>automatic</option>
-                                            <option>manual</option>
+                                            <option>Select Years</option>
+                                            @foreach ($carTransmissionTypes as $carTransmissionType)
+                                                <option value="{{ $carTransmissionType }}">{{ $carTransmissionType }}</option>
+                                            @endforeach
                                         </select>
-                                        @if($errors->has('transmission_types'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('transmission_types')}}
-                                            </span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Year</label>
                                     <div class="controls">
-                                        <input type="text" name="year" id="year" value="{{old('year')}}">
-                                        @if($errors->has('year'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('year')}}
-                                            </span>
-                                        @endif
+                                        <select name="years" style="width: 220px">
+                                            <option>Select Years</option>
+                                            @foreach ($carYears as $carYear)
+                                                <option value="{{ $carYear }}">{{ $carYear }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -119,51 +110,15 @@
                                     <div class="controls">
                                         <select name="engine_id" style="width: 220px">
                                             <option>Select Engine</option>
-                                            @foreach ($engines as $id=>$name)
-                                                <option value="{{$id}}">{{ $name }}</option>
+                                            @foreach ($carEngines as $id=>$name)
+                                                <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
-                                        @if($errors->has('engine_id'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('engine_id')}}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label">Price</label>
-                                    <div class="controls">
-                                        <input type="text" name="price" id="price" value="{{old('price')}}">
-                                        @if($errors->has('price'))
-                                            <span class="alert alert-danger" role="alert">
-                                              {{$errors->first('price')}}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">About</label>
-                                    <div class="controls">
-                                        <textarea type="text" name="about" id="about"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label">Description</label>
-                                    <div class="controls">
-                                        <textarea type="text" name="description" id="description"></textarea>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label">Image</label>
-                                    <div class="controls">
-                                        <input type="file" name="image" id="image">
                                     </div>
                                 </div>
 
                                 <div class="form-actions">
-                                    <input type="submit" value="Add Car" class="btn btn-success">
+                                    <input type="submit" value="Applay Filter" class="btn btn-success">
                                 </div>
                             </form>
                         </div>
