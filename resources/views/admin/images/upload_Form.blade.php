@@ -28,14 +28,14 @@
                                             @endforeach
                                         </ul>
                                     @endif
-                                    <label class="control-label">Car Model</label>
+                                    <label class="control-label">Car Name</label>
                                     <br /><br />
 
                                     <div class="controls">
                                         <select name="car_id" id="car_id" style="width: 220px">
-                                            <option>Select Car model</option>
-                                            @foreach ($carDetails as $id=>$model)
-                                                <option value="{{ $id }}">{{ $model }}</option>
+                                            <option>Select Car</option>
+                                            @foreach ($carDetails as $id=>$name)
+                                                <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
 

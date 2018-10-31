@@ -31,7 +31,7 @@
                                 <thead>
                                 <tr>
                                     <th>Car ID</th>
-                                    <th>Car model</th>
+                                    <th>Car Name</th>
                                     <th>Image</th>
                                     <th>Actions</th>
 
@@ -41,7 +41,7 @@
                                 @foreach($carsImages as $carsImage)
                                     <tr class="gradeX">
                                         <td>{{ $carsImage->car->id }}</td>
-                                        <td>{{ $carsImage->car->model }}</td>
+                                        <td>{{ $carsImage->car->name }}</td>
                                         <td>
                                             @if(!empty($carsImage->filename))
                                                 <img src="{{ asset($carsImage->filename) }}" style="width:50px;">

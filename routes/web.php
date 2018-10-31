@@ -60,6 +60,10 @@ Route::group(['middleware' => ['auth']], function(){
     //Route::match(['get', 'post'], '/admin/delete-car/{id}', 'CarController@deleteCar');
     Route::get('/admin/delete-car/{id}', 'CarController@deleteCar');
 
+    //carsSearch Route (Admin)
+    Route::get('/admin/search-cars', 'SearchController@showFilter');
+    Route::post('/admin/search-cars', 'SearchController@showResultFilter');
+
 
     //Images upload Route
     Route::get('/admin/upload-car-images/{id}', 'CarsImageController@uploadForm');

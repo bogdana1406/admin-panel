@@ -55,70 +55,14 @@ $(document).ready(function(){
 		}
 	});
 
-    //Add Category Validation
-
-    $("#add_category").validate({
-        rules:{
-            category_name:{
-                required:true
-            },
-            description:{
-                required:true
-            },
-            url:{
-                required:true
-            }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight:function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
-    });
-
-
-    //Add Product Validation
-
-    $("#add_product").validate({
-        rules:{
-            category_id:{
-                required:true
-            },
-            product_name:{
-                required:true
-            },
-            product_code:{
-                required:true
-            },
-            product_color:{
-                required:true
-            },
-            price:{
-                required:true
-            },
-            description:{
-                required:true
-            }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight:function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
-    });
 
     //Add Car Validation
 
     $("#add_car").validate({
         rules:{
+            name:{
+                required:true
+            },
             brand_id:{
                 required:true
             },
@@ -213,30 +157,6 @@ $(document).ready(function(){
         }
     });
 
-    //Edit Category Validation
-
-    $("#edit_category").validate({
-        rules:{
-            category_name:{
-                required:true
-            },
-            description:{
-                required:true
-            },
-            url:{
-                required:true
-            }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight:function(element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
-    });
 
     //Edit Brand Validation
 
@@ -280,6 +200,9 @@ $(document).ready(function(){
 
     $("#edit_car").validate({
         rules:{
+            name:{
+                required:true
+            },
             brand_id:{
                 required:true
             },

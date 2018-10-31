@@ -18,7 +18,7 @@ class CarsImageController extends Controller
 {
     public function uploadForm($id=null)
     {
-        $carDetails = Car::where(['id'=>$id])->first();
+        $carDetails = Car::where(['id'=>$id])->first;
         return view('admin.images.upload_Form')->with(['carDetails'=>$carDetails]);
     }
 
@@ -74,7 +74,7 @@ class CarsImageController extends Controller
 
     public function uploadImagesForm()
     {
-        $carDetails = Car::pluck('model', 'id');
+        $carDetails = Car::pluck('name', 'id');
         //dd($carDetails);
         return view('admin.images.upload_Form')->with(['carDetails'=>$carDetails]);
     }

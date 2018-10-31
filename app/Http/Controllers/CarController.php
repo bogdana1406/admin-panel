@@ -91,7 +91,7 @@ class CarController extends Controller
             }
 
 
-            Car::where(['id'=>$id])->update(['model'=>$data['model'],'brand_id'=>$data['brand_id'],
+            Car::where(['id'=>$id])->update(['name'=>$data['name']],['model'=>$data['model'],'brand_id'=>$data['brand_id'],
                 'seats'=>$data['seats'],'doors'=>$data['doors'],'transmission_types'=>$data['transmission_types'],
                 'year'=>$data['year'],'engine_id'=>$data['engine_id'],'price'=>$data['price'],'about'=>$data['about'],
                 'description'=>$data['description'],'image'=>$filename]);

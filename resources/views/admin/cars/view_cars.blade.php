@@ -31,6 +31,7 @@
                                 <thead>
                                 <tr>
                                     <th>Car ID</th>
+                                    <th>Car Name</th>
                                     <th>Car brand</th>
                                     <th>Car model</th>
                                     <th>Seats</th>
@@ -48,6 +49,7 @@
                                 @foreach($cars as $car)
                                     <tr class="gradeX">
                                         <td>{{ $car->id }}</td>
+                                        <td>{{ $car->name }}</td>
                                         <td>{{ $car->brand->name }}</td>
                                         <td>{{ $car->model }}</td>
                                         <td>{{ $car->seats }}</td>

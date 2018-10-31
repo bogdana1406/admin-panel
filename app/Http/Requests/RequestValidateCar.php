@@ -24,6 +24,7 @@ class RequestValidateCar extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required|unique:cars,name|string',
             'brand_id'=>'required|exists:brands,id',
             'model'=>'required|string|max:50',
             'seats'=>'required|integer',
@@ -38,6 +39,7 @@ class RequestValidateCar extends FormRequest
     public function messages()
 {
     return [
+        'name.unique'=>'car name should be unique',
         'brand_id.exists' => 'you should choose brand',
         'engine_id.exists' => 'you should choose type of engines',
 

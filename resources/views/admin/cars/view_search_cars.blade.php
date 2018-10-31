@@ -26,7 +26,7 @@
                             <h5>Add Car</h5>
                         </div>
                         <div class="widget-content nopadding">
-                            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/add-car') }}"
+                            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/search-cars') }}"
                                   name="add_car" id="add_car" novalidate="novalidate"> {{ csrf_field() }}
                                 <div class="control-group">
                                     <label class="control-label">Car name</label>
@@ -39,22 +39,22 @@
                                         @endif
                                     </div>
                                 </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Brand</label>
-                                        <div class="controls">
-                                            <select name="brand_id" style="width: 220px">
-                                                <option>Select Brand</option>
-                                                @foreach ($brands as $id=>$name)
-                                                    <option value="{{$id}}">{{ $name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('brand_id'))
-                                                <span class="alert alert-danger" role="alert">
+                                <div class="control-group">
+                                    <label class="control-label">Brand</label>
+                                    <div class="controls">
+                                        <select name="brand_id" style="width: 220px">
+                                            <option>Select Brand</option>
+                                            @foreach ($brands as $id=>$name)
+                                                <option value="{{$id}}">{{ $name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('brand_id'))
+                                            <span class="alert alert-danger" role="alert">
                                               {{$errors->first('brand_id')}}
                                             </span>
-                                            @endif
-                                        </div>
+                                        @endif
                                     </div>
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label">Model</label>
                                     <div class="controls">

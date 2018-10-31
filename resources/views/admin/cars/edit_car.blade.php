@@ -33,11 +33,20 @@
                                     <label class="control-label">Car ID</label>
                                     <div class="controls">
                                         <input type="text" readonly name="model" id="model" value="{{ $carDetails->id }}">
-
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Car Name</label>
+                                    <div class="controls">
+                                        <input type="text" name="name" id="name" value="{{old('name')??$carDetails->name }}">
+                                        @if($errors->has('name'))
+                                            <span class="alert alert-danger" role="alert">
+                                              {{$errors->first('name')}}
+                                            </span>
+                                        @endif
                                     </div>
 
                                 </div>
-
                                 <div class="control-group">
                                     <label class="control-label">Brand</label>
                                     <div class="controls">
