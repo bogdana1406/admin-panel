@@ -17,14 +17,15 @@
             </ul>
         </li>
 
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars</span> <span class="label label-important">2</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars</span> <span class="label label-important">3</span></a>
             <ul>
                 <li><a href="{{ url('/admin/add-car') }}">Add Car</a></li>
                 <li><a href="{{ url('/admin/view-cars') }}">View Cars</a></li>
+                <li><a href="{{ url('/admin/search-cars') }}">Cars Filter</a></li>
             </ul>
         </li>
 
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars Images</span> <span class="label label-important">1</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars Images</span> <span class="label label-important">2</span></a>
             <ul>
                 <li><a href="{{ url('/admin/view-images-table') }}">Show Cars Images</a></li>
                 <li><a href="{{ url('/admin/upload-car-images-form') }}">Upload Images Form</a></li>
