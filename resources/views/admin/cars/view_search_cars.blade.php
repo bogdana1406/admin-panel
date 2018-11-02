@@ -116,6 +116,13 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="control-group">
+                                    <label class="control-label">Enter maxPrice</label>
+                                    <div class="controls">
+                                        <input type="text" name="price_filter" id="price_filter" value="">
+                                    </div>
+                                </div>
+
                                 <div class="form-actions">
                                     <input type="submit" value="Applay Filter" class="btn btn-success">
                                 </div>
