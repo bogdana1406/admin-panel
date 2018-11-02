@@ -116,7 +116,6 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="form-actions">
                                     <input type="submit" value="Applay Filter" class="btn btn-success">
                                 </div>

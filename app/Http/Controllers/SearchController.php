@@ -33,7 +33,7 @@ class SearchController extends Controller
         $car = $car->newQuery();
 
 //
-            if($request->has('brand_id') && ($data['brand_id']!="false")){
+        if($request->has('brand_id') && ($data['brand_id']!="false")){
              $car->where('brand_id', $request->input('brand_id'))->get();
         }
 
@@ -62,6 +62,10 @@ class SearchController extends Controller
             $car->where('engine_id', $request->input('engine_id'))->get();
         }
 
+//        if($request->has('price_filter')){
+//            $car->where('price', '<=', $request->input('price_filter'))->get();
+//        }
+
         $cars = $car->get();
 
         return view('admin.cars.view_cars')->with(compact('cars'));
@@ -71,7 +75,7 @@ class SearchController extends Controller
 
 
        //dd($request->has('brand_id') && ($data['brand_id']!="Select Brand"));
-        //dd($data['brand_id']!=false);
+       //dd($request->input('price_filter'));
     }
 
 }
