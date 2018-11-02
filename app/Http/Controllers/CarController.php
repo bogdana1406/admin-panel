@@ -30,6 +30,11 @@ class CarController extends Controller
     {
         $data = $request->except('_token');
 
+        $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+        $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+        $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
+        $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
+        //dd($small_h);
 
         if($request->hasFile('image')){
             $image_tmp = Input::file('image');
@@ -37,12 +42,12 @@ class CarController extends Controller
                 $extension = $image_tmp->getClientOriginalExtension();
                 $filename = rand(111, 99999).".".$extension;
                 $large_image_path = 'images/backend_images/cars/large/'.$filename;
-                $medium_image_path = 'images/backend_images/cars/medium/'.$filename;
                 $small_image_path = 'images/backend_images/cars/small/'.$filename;
+                $medium_image_path = 'images/backend_images/cars/medium/'.$filename;
 
                 Image::make($image_tmp)->save($large_image_path);
-                Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
-                Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+                Image::make($image_tmp)->resize($small_h,$small_w)->save($small_image_path);
+                Image::make($image_tmp)->resize($medium_h,$medium_w)->save($medium_image_path);
 
                 $data['image'] = $filename;
             }
@@ -69,13 +74,15 @@ class CarController extends Controller
         public function editCar(RequestValidateCar $request, $id = null)
         {
             $data = $request->all();
-           //dd($data);
+           dd($data);
 
             if($request->hasFile('image')){
                 $image_tmp = Input::file('image');
+                //dd($image_tmp);
                 if($image_tmp->isValid()){
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111, 99999).".".$extension;
+                    //dd($filename);
                     $large_image_path = 'images/backend_images/cars/large/'.$filename;
                     $medium_image_path = 'images/backend_images/cars/medium/'.$filename;
                     $small_image_path = 'images/backend_images/cars/small/'.$filename;
@@ -89,9 +96,9 @@ class CarController extends Controller
             }else{
                 $filename = $data['current_image'];
             }
+            dd($filename);
 
-
-            Car::where(['id'=>$id])->update(['name'=>$data['name']],['model'=>$data['model'],'brand_id'=>$data['brand_id'],
+            Car::where(['id'=>$id])->update(['name'=>$data['new_name']],['model'=>$data['model'],'brand_id'=>$data['brand_id'],
                 'seats'=>$data['seats'],'doors'=>$data['doors'],'transmission_types'=>$data['transmission_types'],
                 'year'=>$data['year'],'engine_id'=>$data['engine_id'],'price'=>$data['price'],'about'=>$data['about'],
                 'description'=>$data['description'],'image'=>$filename]);

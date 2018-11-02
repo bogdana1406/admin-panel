@@ -24,7 +24,7 @@ class RequestValidateCar extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:cars,name|string',
+            'name' =>'required|unique:cars,name|string',
             'brand_id'=>'required|exists:brands,id',
             'model'=>'required|string|max:50',
             'seats'=>'required|integer',

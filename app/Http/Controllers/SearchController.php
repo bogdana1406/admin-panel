@@ -62,15 +62,15 @@ class SearchController extends Controller
             $car->where('engine_id', $request->input('engine_id'))->get();
         }
 
-        if($request->has('price_filter')&&(!$data['price_filter'])){
-            $car->where('price', '>', (int)$request->input('price_filter'))->get();
+        if($request->has('price_filter')&&($data['price_filter']!="")){
+            $car->where('price', '<=', (int)$request->input('price_filter'))->get();
         }
 //
         $cars = $car->get();
 
        return view('admin.cars.view_cars')->with(compact('cars'));
 //
-
+//dd(!$data['price_filter']);
         //return $car->get();
     //dd($car->where('price', '<=', $request->input('price_filter')));
        //dd($data['price_filter']);
