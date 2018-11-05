@@ -86,36 +86,40 @@ class CarController extends Controller
             $old_image = $car->image;
 
             //dd($old_image);
-
-
-            if($old_image){
-                $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$old_image);
-                if($existsMedium){
-                    $medium_w = Image::make('images/backend_images/cars/medium/'.$old_image)->width();
-                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
-                    $medium_h = Image::make('images/backend_images/cars/medium/'.$old_image)->height();
-                }else {
-                    $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
-                    $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
-                }
-            } else {
             $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
             $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
-            }
-            if($old_image){
-                $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$old_image);
-                if($existsSmall){
-                    $small_w = Image::make('images/backend_images/cars/small/'.$old_image)->width();
-                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
-                    $small_h = Image::make('images/backend_images/cars/small/'.$old_image)->height();
-                }else {
-                    $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
-                    $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
-                }
-            } else {
-                $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
-                $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
-            }
+            $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+            $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+
+
+//            if($old_image){
+//                $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$old_image);
+//                if($existsMedium){
+//                    $medium_w = Image::make('images/backend_images/cars/medium/'.$old_image)->width();
+//                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
+//                    $medium_h = Image::make('images/backend_images/cars/medium/'.$old_image)->height();
+//                }else {
+//                    $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
+//                    $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
+//                }
+//            } else {
+//            $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
+//            $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
+//            }
+//            if($old_image){
+//                $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$old_image);
+//                if($existsSmall){
+//                    $small_w = Image::make('images/backend_images/cars/small/'.$old_image)->width();
+//                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
+//                    $small_h = Image::make('images/backend_images/cars/small/'.$old_image)->height();
+//                }else {
+//                    $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+//                    $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+//                }
+//            } else {
+//                $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+//                $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+//            }
 
             //dd($medium_h, $medium_w, $small_h, $small_w);
 
