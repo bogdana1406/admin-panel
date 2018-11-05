@@ -32,7 +32,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Car ID</label>
                                     <div class="controls">
-                                        <input type="text" readonly name="model" id="model" value="{{ $carDetails->id }}">
+                                        <input type="text" readonly name="id" id="id" value="{{ $carDetails->id }}">
                                     </div>
                                 </div>
                                 <div class="control-group">

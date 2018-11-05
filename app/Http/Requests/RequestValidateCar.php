@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Car;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Validation\Rule;
 
 class RequestValidateCar extends FormRequest
 {
@@ -23,8 +26,28 @@ class RequestValidateCar extends FormRequest
      */
     public function rules()
     {
+//        $rules = [
+//            'name'=>['required','string',
+//                Rule::unique('cars','name')->ignore(request()->id),
+//                ],
+//            'brand_id'=>'required|exists:brands,id',
+//            'model'=>'required|string|max:50',
+//            'seats'=>'required|integer',
+//            'doors'=>'required|integer',
+//            'transmission_types'=>'required|in:automatic,manual',
+//            'year'=>'required|integer',
+//            'engine_id'=>'required|exists:engines,id',
+//            'price'=>'required',
+//
+//        ];
+
+
+        //return $rules;
+//        $car = Car::all();
+        $data = request();
         return [
-            'name' =>'required|unique:cars,name|string',
+
+            'name' =>"required|string|unique:cars,name,{$data->id}",
             'brand_id'=>'required|exists:brands,id',
             'model'=>'required|string|max:50',
             'seats'=>'required|integer',
