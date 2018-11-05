@@ -34,7 +34,7 @@ class CarController extends Controller
         $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
         $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
         $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
-        //dd($small_h);
+       // dd($small_h, $small_w, $medium_h, $medium_w);
 
         if($request->hasFile('image')){
             $image_tmp = Input::file('image');
@@ -46,9 +46,15 @@ class CarController extends Controller
                 $medium_image_path = 'images/backend_images/cars/medium/'.$filename;
 
                 Image::make($image_tmp)->save($large_image_path);
-                Image::make($image_tmp)->resize($small_h,$small_w)->save($small_image_path);
-                Image::make($image_tmp)->resize($medium_h,$medium_w)->save($medium_image_path);
+                Image::make($image_tmp)->resize($small_w, $small_h)->save($small_image_path);
+                //$small_ww = Image::make($small_image_path)->width();
+                //$small_hh = Image::make($small_image_path)->height();
 
+                Image::make($image_tmp)->resize($medium_w, $medium_h)->save($medium_image_path);
+                //$medium_ww = Image::make($medium_image_path)->width();
+                //$medium_hh = Image::make($medium_image_path)->height();
+
+               // dd($small_ww, $small_hh, $medium_ww, $medium_hh);
                 $data['image'] = $filename;
             }
         }
@@ -76,8 +82,63 @@ class CarController extends Controller
         {
             $data = $request->all();
            //dd($data);
+            $car = Car::find($id);
+            $old_image = $car->image;
+
+            //dd($old_image);
+
+
+            if($old_image){
+                $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$old_image);
+                if($existsMedium){
+                    $medium_w = Image::make('images/backend_images/cars/medium/'.$old_image)->width();
+                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
+                    $medium_h = Image::make('images/backend_images/cars/medium/'.$old_image)->height();
+                }else {
+                    $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
+                    $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
+                }
+            } else {
+            $medium_h = ($data['medium_h'] && ($data['medium_h']>0)) ? (int)$data['medium_h']:600;
+            $medium_w = ($data['medium_w'] && ($data['medium_w']>0)) ? (int)$data['medium_w']:600;
+            }
+            if($old_image){
+                $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$old_image);
+                if($existsSmall){
+                    $small_w = Image::make('images/backend_images/cars/small/'.$old_image)->width();
+                    //dd($medium_w, Image::make('images/backend_images/cars/medium/'.$old_image));
+                    $small_h = Image::make('images/backend_images/cars/small/'.$old_image)->height();
+                }else {
+                    $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+                    $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+                }
+            } else {
+                $small_h = ($data['small_h'] && ($data['small_h']>0)) ? (int)$data['small_h']:300;
+                $small_w = ($data['small_w'] && ($data['small_w']>0)) ? (int)$data['small_w']:300;
+            }
+
+            //dd($medium_h, $medium_w, $small_h, $small_w);
+
 
             if($request->hasFile('image')){
+                if($old_image){
+                    $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$old_image);
+                    if($existsMedium){
+                            Storage::disk('public')->delete('images/backend_images/cars/medium/'.$old_image);
+                    }
+                }
+                if($old_image){
+                    $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$old_image);
+                    if($existsSmall){
+                        Storage::disk('public')->delete('images/backend_images/cars/small/'.$old_image);
+                    }
+                }
+                if($old_image){
+                    $existsLarge = Storage::disk('public')->exists('images/backend_images/cars/large/'.$old_image);
+                    if($existsLarge){
+                        Storage::disk('public')->delete('images/backend_images/cars/large/'.$old_image);
+                    }
+                }
                 $image_tmp = Input::file('image');
                 //dd($image_tmp);
                 if($image_tmp->isValid()){
@@ -89,8 +150,8 @@ class CarController extends Controller
                     $small_image_path = 'images/backend_images/cars/small/'.$filename;
 
                     Image::make($image_tmp)->save($large_image_path);
-                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
-                    Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+                    Image::make($image_tmp)->resize($medium_w,$medium_h)->save($medium_image_path);
+                    Image::make($image_tmp)->resize($small_w,$small_h)->save($small_image_path);
 
                     //$data['image'] = $filename;
                 }

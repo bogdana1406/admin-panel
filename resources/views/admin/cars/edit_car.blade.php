@@ -165,6 +165,21 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+
+                                    <label class="control-label">Parameters Small Image</label>
+                                    <div class="controls">
+                                        <input type="text" class="span1" name="small_h" id="small_h" value="">
+
+                                        <input type="text" class="span1" name="small_w" id="small_w" value="">
+                                    </div>
+
+                                    <label class="control-label">Parameters Medium Image</label>
+                                    <div class="controls">
+                                        <input type="text" class="span1" name="medium_h" id="medium_h" value="">
+
+                                        <input type="text" class="span1" name="medium_w" id="medium_w" value="">
+                                    </div>
+
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <input type="file" name="image" id="image">
