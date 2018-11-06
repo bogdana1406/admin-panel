@@ -40,9 +40,15 @@ class BrandController extends Controller
     }
 
     public function deleteBrand($id = null){
+
         if(!empty($id)){
+            $brandUsed = Brand::where(['id'=>$id])->has('car')->get()->toArray();
+            if(empty($brandUsed)){
             Brand::where(['id'=>$id])->delete();
             return redirect()->back()->with('flash_massage_success', 'Brand Delete Successfully');
+            }else{
+                return redirect()->back()->with('flash_massage_error', 'This Brand use in Cars table');
+            }
         }
     }
 

@@ -47,9 +47,14 @@ class EngineController extends Controller
 //    }
 
     public function deleteEngine($id = null){
-        if(!empty($id)){
-            Engine::where(['id'=>$id])->delete();
-            return redirect()->back()->with('flash_massage_success', 'Engine Delete Successfully');
+        if(!empty($id)) {
+            $engineUsed = Engine::where(['id' => $id])->has('car')->get()->toArray();
+            if (empty($engineUsed)) {
+                Engine::where(['id' => $id])->delete();
+                return redirect()->back()->with('flash_massage_success', 'Engine Delete Successfully');
+            } else {
+                return redirect()->back()->with('flash_massage_error', 'This Engine use in Cars table');
+            }
         }
     }
 
