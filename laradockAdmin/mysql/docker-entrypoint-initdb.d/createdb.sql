@@ -25,18 +25,6 @@
 #GRANT ALL ON `dev_db_3`.* TO 'default'@'%' ;
 
 
-CREATE DATABASE IF NOT EXISTS ico_sender COLLATE 'utf8mb4_unicode_ci';
-
-CREATE TABLE ico_sender.transfer (
-  id INT UNSIGNED NOT NULL,
-  hash VARCHAR(255) NULL,
-  type TINYINT NOT NULL,
-  status_transfer TINYINT NOT NULL,
-  status_tx TINYINT NULL,
-  PRIMARY KEY (id),
-  UNIQUE INDEX hash_UNIQUE (hash ASC),
-  UNIQUE INDEX id_UNIQUE (id ASC));
-
-GRANT ALL ON `ico_sender`.* TO 'default'@'%' ;
-
+CREATE DATABASE IF NOT EXISTS `adminKa` COLLATE 'utf8mb4_unicode_ci';
+GRANT ALL ON `adminKa`.* TO 'default'@'%' ;
 FLUSH PRIVILEGES ;

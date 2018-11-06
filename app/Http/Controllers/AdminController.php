@@ -58,7 +58,7 @@ class AdminController extends Controller
             $current_user = Auth::user();
 
             $current_password = $data['current_pwd'];
-            $confirm_password = $data['confirm_pwd'];
+            //$confirm_password = $data['confirm_pwd'];
             if(Hash::check($current_password, $current_user->password)){
                 $password = bcrypt($data['new_pwd']);
                 $current_user->update(['password'=>$password]);

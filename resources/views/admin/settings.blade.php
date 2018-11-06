@@ -53,7 +53,6 @@
                                         <div class="controls">
                                             <input type="password" name="confirm_pwd" id="confirm_pwd" />
                                             @if($errors->has('confirm_pwd'))
-
                                                 <span class="alert alert-danger" role="alert">
                                               {{$errors->first('confirm_pwd')}}
                                             </span>
