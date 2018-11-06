@@ -78,10 +78,11 @@
                                         <div id="myModal{{ $car->id }}" class="modal hide">
                                             <div class="modal-header">
                                                 <button data-dismiss="modal" class="close" type="button">×</button>
-                                                <h3>{{ $car->model }} Full details</h3>
+                                                <h3>{{ $car->name }} Full details</h3>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Car ID:            {{ $car->id }}</p>
+                                                <p>Model:             {{ $car->model }}</p>
                                                 <p>Brand:             {{ $car->brand->name }}</p>
                                                 <p>Seats:             {{ $car->seats }}</p>
                                                 <p>Doors:             {{ $car->doors }}</p>
