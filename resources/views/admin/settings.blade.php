@@ -40,12 +40,24 @@
                                         <label class="control-label">New Password</label>
                                         <div class="controls">
                                             <input type="password" name="new_pwd" id="new_pwd" />
+                                            @if($errors->has('new_pwd'))
+
+                                                <span class="alert alert-danger" role="alert">
+                                              {{$errors->first('new_pwd')}}
+                                            </span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Confirm Password</label>
                                         <div class="controls">
                                             <input type="password" name="confirm_pwd" id="confirm_pwd" />
+                                            @if($errors->has('confirm_pwd'))
+
+                                                <span class="alert alert-danger" role="alert">
+                                              {{$errors->first('confirm_pwd')}}
+                                            </span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="form-actions">

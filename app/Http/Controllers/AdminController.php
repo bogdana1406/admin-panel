@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RequestValidatePassword;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\User;
@@ -48,7 +49,7 @@ class AdminController extends Controller
         }
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(RequestValidatePassword $request)
     {
         if($request->isMethod('post'))
         {
@@ -57,6 +58,7 @@ class AdminController extends Controller
             $current_user = Auth::user();
 
             $current_password = $data['current_pwd'];
+            $confirm_password = $data['confirm_pwd'];
             if(Hash::check($current_password, $current_user->password)){
                 $password = bcrypt($data['new_pwd']);
                 $current_user->update(['password'=>$password]);
