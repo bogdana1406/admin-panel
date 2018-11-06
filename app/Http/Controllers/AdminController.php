@@ -40,7 +40,7 @@ class AdminController extends Controller
     {
         $data = $request->all();
         $current_password = $data['current_pwd'];
-        $check_password = User::where(['admin'=>'1'])->first();
+        $check_password = Auth::user();
         if(Hash::check($current_password, $check_password->password)){
             echo "true"; die;
         }else{
