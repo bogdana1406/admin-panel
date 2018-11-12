@@ -21,10 +21,14 @@ class RequestValidateBrand extends FormRequest
      *
      * @return array
      */
+
+
     public function rules()
     {
+        $data = request();
+
         return [
-            'brand_name' => 'required|unique:brands,name|string',
+            'brand_name' => "required|unique:brands,name,{$data->id}",
         ];
     }
 }

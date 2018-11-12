@@ -23,8 +23,10 @@ class RequestValidateEngine extends FormRequest
      */
     public function rules()
     {
+        $data = request();
+
         return [
-            'engine_name' => 'required|unique:engines,name',
+            'engine_name' => "required|unique:engines,name,{$data->id}",
         ];
     }
 }
