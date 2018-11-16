@@ -20,8 +20,7 @@ class SearchController extends Controller
         $carSeats = array_unique(Car::pluck('seats')->toArray());
         $carYears = array_unique(Car::pluck('year')->toArray());
         $carTransmissionTypes = array_unique(Car::pluck('transmission_types')->toArray());
-        //dd($carTransmissionTypes);
-        //dd($carDetails);
+
         return view('admin.cars.view_search_cars')->with(['carDetails'=>$carDetails, 'carModels'=>$carModels, 'carBrands'=>$carBrands, 'carEngines'=>$carEngines,
             'carDoors'=>$carDoors, 'carSeats'=>$carSeats, 'carYears'=>$carYears, 'carTransmissionTypes'=>$carTransmissionTypes]);
     }
@@ -62,20 +61,18 @@ class SearchController extends Controller
             $car->where('engine_id', $request->input('engine_id'))->get();
         }
 
-        if($request->has('price_filter')&&($data['price_filter']!="")){
-            $car->where('price', '<=', (int)$request->input('price_filter'))->get();
+        if($request->has('max_price_filter')&&($data['max_price_filter']!="")){
+            $car->where('price', '<=', (int)$request->input('max_price_filter'))->get();
+        }
+
+        if($request->has('min_price_filter')&&($data['min_price_filter']!="")){
+            $car->where('price', '>', (int)$request->input('min_price_filter'))->get();
         }
 //
         $cars = $car->get();
 
        return view('admin.cars.view_cars')->with(compact('cars'));
-//
-//dd(!$data['price_filter']);
-        //return $car->get();
-    //dd($car->where('price', '<=', $request->input('price_filter')));
-       //dd($data['price_filter']);
-       //dd($request->has('brand_id') && ($data['brand_id']!="Select Brand"));
-       //dd($request->input('price_filter'));
+
     }
 
 }

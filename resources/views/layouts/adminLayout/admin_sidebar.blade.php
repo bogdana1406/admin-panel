@@ -22,32 +22,16 @@
                 <li><a href="{{ url('/admin/view-reviews') }}">View All Review</a></li>
             </ul>
         </li>
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Brands</span> <span class="label label-important">2</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>General Settings</span> <span class="label label-important">1</span></a>
             <ul>
-                <li><a href="{{ url('/admin/add-brand') }}">Add Brand</a></li>
-                <li><a href="{{ url('/admin/view-brands') }}">View Brands</a></li>
+                <li><a href="{{ url('/admin/add-settings-page') }}">Add Home Page</a></li>
+                <li><a href="{{ url('/admin/view-settings-page') }}">View Home Page</a></li>
             </ul>
         </li>
-
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Enginess</span> <span class="label label-important">2</span></a>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Pages</span> <span class="label label-important">2</span></a>
             <ul>
-                <li><a href="{{ url('/admin/add-engine') }}">Add Engine</a></li>
-                <li><a href="{{ url('/admin/view-engines') }}">View Engines</a></li>
-            </ul>
-        </li>
-
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars</span> <span class="label label-important">3</span></a>
-            <ul>
-                <li><a href="{{ url('/admin/add-car') }}">Add Car</a></li>
-                <li><a href="{{ url('/admin/view-cars') }}">View Cars</a></li>
-                <li><a href="{{ url('/admin/search-cars') }}">Cars Filter</a></li>
-            </ul>
-        </li>
-
-        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cars Images</span> <span class="label label-important">2</span></a>
-            <ul>
-                <li><a href="{{ url('/admin/view-images-table') }}">Show Cars Images</a></li>
-                <li><a href="{{ url('/admin/upload-car-images-form') }}">Upload Images Form</a></li>
+                <li><a href="{{ url('/admin/add-home-page') }}">Add Home Page</a></li>
+                <li><a href="{{ url('/admin/view-home-page') }}">View Home Page</a></li>
             </ul>
         </li>
 

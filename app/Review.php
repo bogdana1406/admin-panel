@@ -14,4 +14,5 @@ class Review extends Model
         'customer_photo',
         'mark_review'
     ];
+
 }

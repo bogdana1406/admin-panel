@@ -26,7 +26,6 @@ class ReviewController extends Controller
             $data['customer_photo'] = $filepath;
         }
         $review = Review::create($data);
-        //dd($review);
         if($review){
             return redirect('/admin/view-reviews')->with('flash_massage_success', 'Review has been added successfully');
         }else{

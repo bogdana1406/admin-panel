@@ -119,7 +119,13 @@
                                 <div class="control-group">
                                     <label class="control-label">Enter maxPrice</label>
                                     <div class="controls">
-                                        <input type="text" name="price_filter" id="price_filter" value="">
+                                        <input type="text" name="max_price_filter" id="max_price_filter" value="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Enter minPrice</label>
+                                    <div class="controls">
+                                        <input type="text" name="min_price_filter" id="min_price_filter" value="">
                                     </div>
                                 </div>
 
