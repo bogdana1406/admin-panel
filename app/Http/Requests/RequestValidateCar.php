@@ -55,7 +55,7 @@ class RequestValidateCar extends FormRequest
             'transmission_types'=>'required|in:automatic,manual',
             'year'=>'required|integer',
             'engine_id'=>'required|exists:engines,id',
-            'price'=>'required',
+            'price'=>'required|integer',
         ];
     }
 

@@ -370,6 +370,19 @@ $(document).ready(function(){
         return false;
     });
 
+    // Delete ReviewRecord Validation
+
+    $(".delReview").click(function(event){
+
+        if(confirm('Are you sure you want to delete this Review?')){
+
+            window.location.href = '/admin/delete-review/' + event.target.dataset.id;
+            return true;
+
+        }
+        return false;
+    });
+
     //Delete with sweet alert (view_cars first link)
     // $(".deleteRecord").click(function(){
     //     var id = $(this).attr('rel');

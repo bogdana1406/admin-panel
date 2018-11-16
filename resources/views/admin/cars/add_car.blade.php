@@ -145,14 +145,14 @@
                                 <div class="control-group">
                                     <label class="control-label">About</label>
                                     <div class="controls">
-                                        <textarea type="text" name="about" id="about"></textarea>
+                                        <textarea type="text" rows="10" cols="45" name="about" id="about">{{old('about')}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
-                                        <textarea type="text" name="description" id="description"></textarea>
+                                        <textarea type="text" rows="10" cols="45" name="description" id="description">{{old('description')}}</textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">

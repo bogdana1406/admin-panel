@@ -71,7 +71,7 @@
                                             {{--class="btn btn-danger btn-mini deleteRecord">Delete</a>--}}
 
                                             <a data-id="{{$car->id}}" href="#" class="btn btn-danger btn-mini delCar">Delete</a>
-
+                                            </div>
                                         </td>
                                     </tr>
 

@@ -38,12 +38,12 @@
                                 <div class="control-group">
                                     <label class="control-label">Car Name</label>
                                     <div class="controls">
-                                        <input type="text" name="name" id="name" value="{{old('name')??$carDetails->name }}">
+                                        <input type="text" name="name" id="name" value="{{old('name') ?? $carDetails->name }}">
                                         @if($errors->has('name'))
                                             <span class="alert alert-danger" role="alert">
                                               {{$errors->first('name')}}
                                             </span>
-                                        @endif
+                                        @endif.
                                     </div>
 
                                 </div>
@@ -154,14 +154,14 @@
                                 <div class="control-group">
                                     <label class="control-label">About</label>
                                     <div class="controls">
-                                        <textarea type="text" name="about" id="about">{{ old('about')?? $carDetails->about }}</textarea>
+                                        <textarea type="text" rows="10" cols="45" name="about" id="about">{{ old('about')?? $carDetails->about }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
-                                        <textarea type="text" name="description" id="description">{{ old('description')?? $carDetails->description}}</textarea>
+                                        <textarea type="text" rows="10" cols="45" name="description" id="description">{{ old('description')?? $carDetails->description}}</textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">

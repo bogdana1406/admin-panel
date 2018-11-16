@@ -207,6 +207,20 @@ class CarController extends Controller
 
              $car = Car::find($id);
 
+             $filename = $car->image;
+             $existsLarge = Storage::disk('public')->exists('images/backend_images/cars/large/'.$filename);
+             if($existsLarge){
+                Storage::disk('public')->delete('images/backend_images/cars/large/'.$filename);
+             }
+             $existsMedium = Storage::disk('public')->exists('images/backend_images/cars/medium/'.$filename);
+             if($existsMedium){
+                Storage::disk('public')->delete('images/backend_images/cars/medium/'.$filename);
+             }
+             $existsSmall = Storage::disk('public')->exists('images/backend_images/cars/small/'.$filename);
+             if($existsSmall){
+                Storage::disk('public')->delete('images/backend_images/cars/small/'.$filename);
+             }
+
                 if($car) {
                     $carsImageRecords = $car->carsImage()->pluck('filename')->toArray();
                     $deleteImg = Storage::delete($carsImageRecords);

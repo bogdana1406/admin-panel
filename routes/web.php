@@ -48,6 +48,15 @@ Route::group(['middleware' => ['auth']], function(){
     Route::match(['get', 'post'], '/admin/delete-engine/{id}', 'EngineController@deleteEngine');
     Route::get('/admin/view-engines', 'EngineController@viewEngines');
 
+    //reviews Route (Admin)
+
+    Route::get('/admin/add-review', 'ReviewController@showAddReview');
+    Route::post('/admin/add-review', 'ReviewController@addReview');
+    Route::get('/admin/view-reviews', 'ReviewController@viewReview');
+    Route::get('/admin/edit-review/{id}', 'ReviewController@showEditReview');
+    Route::post('/admin/edit-review/{id}', 'ReviewController@editReview');
+    Route::get('/admin/delete-review-image/{id}', 'ReviewController@deleteReviewPhoto');
+    Route::get('/admin/delete-review/{id}', 'ReviewController@deleteReview');
 
     //cars Route (Admin)
 
